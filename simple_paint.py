@@ -44,6 +44,8 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
         key = cv.waitKey(1)
         if key == 27: # ESC
             break
+        elif key == ord('r'):
+            canvas = np.full((canvas_height, canvas_width, 3), 255, dtype=np.uint8)
         elif ke == ord('\t'):
             brush_color = (brush_color + 1) % len(palette)
         elif key == ord('+') or key == ord('='):
