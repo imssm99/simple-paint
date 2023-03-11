@@ -8,7 +8,7 @@ def mouse_event_handler(event, x, y, flags, param):
         param[1] = (x, y)
     elif event == cv.EVENT_LBUTTONUP:
         param[0] = False
-    elif event == cv.EVENT_MOUSEMOVE and param[0]:
+    elif event == cv.EVENT_MOUSEMOVE:
         param[1] = (x, y)
 
 def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
@@ -25,11 +25,13 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
     cv.namedWindow('Free Drawing')
     cv.setMouseCallback('Free Drawing', mouse_event_handler, mouse_state)
 
+    prev_xy = (0, 0)
     while True:
         # Draw a point if necessary
         mouse_left_button_click, mouse_xy = mouse_state
         if mouse_left_button_click:
-           cv.circle(canvas, mouse_xy, brush_radius, palette[brush_color], -1)
+            cv.line(canvas, prev_xy, mouse_xy, palette[brush_color], brush_radius)
+        prev_xy = mouse_xy
 
         # Show the canvas
         canvas_copy = canvas.copy()
@@ -42,7 +44,7 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
         key = cv.waitKey(1)
         if key == 27: # ESC
             break
-        elif key == ord('\t'):
+        elif ke == ord('\t'):
             brush_color = (brush_color + 1) % len(palette)
         elif key == ord('+') or key == ord('='):
             brush_radius += 1
