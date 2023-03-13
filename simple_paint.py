@@ -38,6 +38,9 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
         info = f'Brush Radius: {brush_radius}'
         cv.putText(canvas_copy, info, (10, 25), cv.FONT_HERSHEY_DUPLEX, 0.6, (127, 127, 127), thickness=2)
         cv.putText(canvas_copy, info, (10, 25), cv.FONT_HERSHEY_DUPLEX, 0.6, palette[brush_color])
+        
+        # Show cursor
+        cv.circle(canvas_copy, mouse_xy, int(round(brush_radius/2)), palette[brush_color], 1)
         cv.imshow('Free Drawing', canvas_copy)
 
         # Process the key event
