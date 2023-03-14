@@ -22,8 +22,8 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
     brush_radius = init_brush_radius
 
     # Instantiate a window and register the mouse callback function
-    cv.namedWindow('Free Drawing')
-    cv.setMouseCallback('Free Drawing', mouse_event_handler, mouse_state)
+    cv.namedWindow('Simple Paint')
+    cv.setMouseCallback('Simple Paint', mouse_event_handler, mouse_state)
 
     prev_xy = (0, 0)
     while True:
@@ -41,7 +41,7 @@ def free_drawing(canvas_width=640, canvas_height=480, init_brush_radius=3):
         
         # Show cursor
         cv.circle(canvas_copy, mouse_xy, int(round(brush_radius/2)), palette[brush_color], 1)
-        cv.imshow('Free Drawing', canvas_copy)
+        cv.imshow('Simple Paint', canvas_copy)
 
         # Process the key event
         key = cv.waitKey(1)
