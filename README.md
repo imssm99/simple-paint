@@ -26,8 +26,6 @@ Visible brush cursor to obtain proper brush size.
 
 ### Draw Shapes
 
-- `R` Key to draw rectangle.
-- `C` Key to draw circle.
 ![Shapes](./images/shapes.png)
 
 ## How to Use
